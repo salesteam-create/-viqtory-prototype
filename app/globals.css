@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Miranda+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Miranda Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Surface tokens — light mode is primary */
+  --surface-0: #ffffff;
+  --surface-1: #f9fafc;
+  --surface-2: #f1f3f9;
+  --surface-3: #e6e8f0;
+
+  /* Ink tokens */
+  --ink-1: #0a0e1a;
+  --ink-2: #1b2235;
+  --ink-3: #404863;
+  --ink-4: #6b7390;
+
+  /* Brand tokens */
+  --brand-navy: #0b1b3d;
+  --brand-navy-deep: #050b1f;
+  --brand-electric: #3d5afe;
+  --brand-electric-soft: #eaeeff;
+
+  /* Border tokens */
+  --border-subtle: rgba(11, 27, 61, 0.08);
+  --border-soft: rgba(11, 27, 61, 0.12);
+  --border-strong: rgba(11, 27, 61, 0.2);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+* {
+  border-color: var(--border-subtle);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--surface-0);
+  color: var(--ink-1);
+  font-feature-settings: "ss01", "cv11", "cv02";
+}
+
+/* Selection */
+::selection {
+  background: var(--brand-electric);
+  color: white;
+}
+
+/* Utility: fine grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-grid-tight {
+  background-image:
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Utility: noise texture */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Utility: radial fade for hero backgrounds */
+.bg-hero-glow {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 90, 254, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(11, 27, 61, 0.05), transparent 60%),
+    var(--surface-0);
+}
+
+/* Animated number counter base */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle marquee mask */
+.mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Custom focus ring */
+*:focus-visible {
+  outline: 2px solid var(--brand-electric);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Stagger reveal — child indexes set via inline style */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.8s var(--ease-out-expo) forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cinematic hero overlay — strong bottom-left ink wash, lighter top wash */
+.bg-hero-cinematic-overlay {
+  background:
+    linear-gradient(to top, rgba(10, 14, 26, 0.4) 0%, transparent 30%),
+    linear-gradient(
+      to top right,
+      rgba(10, 14, 26, 0.85) 0%,
+      rgba(10, 14, 26, 0.5) 60%,
+      rgba(10, 14, 26, 0.2) 100%
+    );
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.animate-scroll-hint {
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+/* Marquee — translates one duplicated track from 0 to -50% so the loop is seamless */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+  width: max-content;
+}
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
