@@ -62,7 +62,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden h-[70vh] md:h-[90vh] min-h-[560px] bg-ink-900">
       <Image
-        src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=2400&q=85"
+        src={asset("/hero.png")}
         alt=""
         fill
         priority
