@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useCountUp } from "@/lib/use-count-up";
+import { asset } from "@/lib/asset";
 import { Section, Container } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button } from "@/components/ui/button";
@@ -138,11 +139,11 @@ function Hero() {
 
 function TrustedPartners() {
   const partners = [
-    { name: "Partner 1", src: "/trusted-partners/partner-1.png" },
-    { name: "Partner 2", src: "/trusted-partners/partner-2.png" },
-    { name: "Partner 3", src: "/trusted-partners/partner-3.png" },
-    { name: "Partner 4", src: "/trusted-partners/partner-4.png" },
-    { name: "Partner 5", src: "/trusted-partners/partner-5.png" },
+    { name: "Partner 1", src: asset("/trusted-partners/partner-1.png") },
+    { name: "Partner 2", src: asset("/trusted-partners/partner-2.png") },
+    { name: "Partner 3", src: asset("/trusted-partners/partner-3.png") },
+    { name: "Partner 4", src: asset("/trusted-partners/partner-4.png") },
+    { name: "Partner 5", src: asset("/trusted-partners/partner-5.png") },
   ];
   // Duplicate so the translateX(-50%) loop is seamless
   const track = [...partners, ...partners];

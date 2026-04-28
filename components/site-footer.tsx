@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { Eyebrow } from "@/components/ui/eyebrow";
 
 const FOOTER_GROUPS = [
@@ -53,7 +54,7 @@ export function SiteFooter() {
           <div className="lg:col-span-4">
             <div className="flex items-center">
               <Image
-                src="/viqtory-logo.png"
+                src={asset("/viqtory-logo.png")}
                 alt="VIQTORY"
                 width={180}
                 height={48}

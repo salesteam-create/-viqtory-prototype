@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { Section, Container } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button } from "@/components/ui/button";
@@ -520,11 +521,11 @@ function ProofStrip() {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-px bg-[var(--border-subtle)] rounded-xl overflow-hidden">
               {[
-                { name: "Partner 1", src: "/trusted-partners/partner-1.png" },
-                { name: "Partner 2", src: "/trusted-partners/partner-2.png" },
-                { name: "Partner 3", src: "/trusted-partners/partner-3.png" },
-                { name: "Partner 4", src: "/trusted-partners/partner-4.png" },
-                { name: "Partner 5", src: "/trusted-partners/partner-5.png" },
+                { name: "Partner 1", src: asset("/trusted-partners/partner-1.png") },
+                { name: "Partner 2", src: asset("/trusted-partners/partner-2.png") },
+                { name: "Partner 3", src: asset("/trusted-partners/partner-3.png") },
+                { name: "Partner 4", src: asset("/trusted-partners/partner-4.png") },
+                { name: "Partner 5", src: asset("/trusted-partners/partner-5.png") },
               ].map((c) => (
                 <div
                   key={c.name}

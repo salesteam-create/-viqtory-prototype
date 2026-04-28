@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/asset";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -37,7 +38,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 md:h-[72px] md:px-10">
         <Link href="/" className="group flex items-center gap-3">
           <Image
-            src="/viqtory-logo.png"
+            src={asset("/viqtory-logo.png")}
             alt="VIQTORY"
             width={160}
             height={40}
